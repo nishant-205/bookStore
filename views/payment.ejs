@@ -1,0 +1,59 @@
+<%-include ('partials/header.ejs') %>
+
+
+<link rel="stylesheet" href="/css/payment.css">
+
+
+<div class="container">
+    <div class="left">
+        Payment Options
+        <div class="payOpt-tog">Credit & Debit Cards</div>
+        <div class="payOpt-cont">
+            <form action="">
+                <label for="cardNo">Card Number</label>
+                <input name="cardNo" placeholder="XXXX XXXX XXXX XXXX">
+                <label for="month">Month</label>
+                <input name="month" placeholder="00">
+                <label for="year">Year</label>
+                <input name="year" placeholder="00">
+                <label for="name">Name on Card</label>
+                <input name="name" placeholder="Your Name">
+            </form>
+        </div>
+        <div class="payOpt-tog">Netbanking</div>
+        <div class="payOpt-cont xyzabc">
+        </div>
+        <div class="payOpt-tog">Wallets</div>
+        <div class="payOpt-cont">
+
+        </div>
+        <div class="payOpt-tog">UPI</div>
+        <div class="payOpt-cont">
+
+        </div>
+        <div class="addr">
+            Deliver to
+        </div>
+    </div>
+    <div class="right">
+        <div class="ord-sum">
+            <h3>Order Summary</h3>
+            <div class="sum">
+                <div>Cart Total</div>
+                <div>Rs 399</div>
+            </div>
+            <div class="sum">
+                <div>Shipping Charges</div>
+                <div>Rs 39</div>
+            </div>
+            <div class="sum">
+                <div>Subtotal</div>
+                <div>Rs 399</div>
+            </div>
+        </div>
+        <!-- <div>Checkout</div> -->
+    </div>
+</div>
+
+
+<%- include ('partials/footer.ejs') %>

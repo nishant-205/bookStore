@@ -1,0 +1,115 @@
+<%- include("partials/header") %>
+<link rel="stylesheet" href="/css/new-product.css">
+<div class="main-cont">
+    <form action="/new-product" method="POST">
+        <div>
+            <label for="Prod[img][0]"> Image URL No 1 :</label>
+            <input type="text" name="Prod[img][0]" placeholder="Image URL*" required>
+        </div>
+        <div id="add-img">
+            <i class="fas fa-plus-square"></i><span>Add another URL</span>
+        </div>
+        <div>
+            <label for="Prod[name]"> Book Name: </label>
+            <input type="text" name="Prod[name]" placeholder="Book Name*" required>
+        </div>
+        <div>
+            <label for="Prod[author][0]"> Author Name:</label>
+            <input type="text" name="Prod[author][0]" placeholder="Author Name*" required>
+        </div>
+        <div id="add-author">
+            <i class="fas fa-plus-square"></i><span>Add another Author</span>
+        </div>
+        <div>
+            <label for="Prod[publisher"> Publisher Name: </label>
+            <input type="text" name="Prod[publisher]" placeholder="Publisher Name*" required>
+        </div>
+        <div>
+            <label for="Prod[page]"> Number of Pages: </label>
+            <input type="number" name="Prod[page]" placeholder="Number of Pages*" required>
+        </div>
+        <div>
+            <label for="Prod[language]"> Language: </label>
+            <input type="text" name="Prod[language]" placeholder="Language*" required>
+        </div>
+        <div>
+            <label for="Prod[ISBN10"> ISBN10 Number: </label>
+            <input type="text" name="Prod[ISBN10]" placeholder="ISBN10 Number*" required>
+        </div>
+        <div>
+            <label for="Prod[ISBN13]"> ISBN13 Number: </label>
+            <input type="text" name="Prod[ISBN13]" placeholder="ISBN13 Number*" required>
+        </div>
+        <div>
+            <label for="[Prod[edition]"> Edition: </label>
+            <input type="number" name="Prod[edition]" placeholder="Edition*" required>
+        </div>
+        <div>
+            <label for="Prod[publishing_date]"> Publishing Date: </label>
+            <input type="text" name="Prod[publishing_date]" placeholder="Publishing Date*" required>
+        </div>
+        <div>
+            <label for="Prod[discount]"> Discount: </label>
+            <input type="number" name="Prod[discount]" placeholder="Discount">
+        </div>
+        <div>
+            <label for="Prod[description]"> Description: </label>
+            <textarea name="Prod[description]" required></textarea>
+        </div>
+        <div>
+            <label for="Prod[price_Kindle]"> Kindle Price: </label>
+            <input type="number" name="Prod[price_Kindle]" placeholder="Kindle Version Price">
+        </div>
+        <div>
+            <label for="Prod[price_HardCover]"> HardCover Price: </label>
+            <input type="number" name="Prod[price_HardCover]" placeholder="HardCover Version Price">
+        </div>
+        <div>
+            <label for="Prod[price_PaperBack]"> PaperBack Price: </label>
+            <input type="number" name="Prod[price_PaperBack]" placeholder="PaperBack Version Price*" required>
+        </div>
+        <!-- <div>
+            <label for="Prod[tags]">Tags (Comma separated) : </label>
+            <input type="text" name="Prod[tags]" placeholder="Enter Product Tags (Comma separated)">
+        </div> -->
+        <input type="submit" value="Save">
+    </form>
+</div>
+
+<script>
+    var imgNo=0, authorNo=0;
+    document.getElementById('add-img').addEventListener('click', ()=>{
+        imgNo++;
+        var label= document.createElement("label");
+        label.innerHTML= 'Image URL No '+ (imgNo+1) +' :';
+        label.setAttribute("for","Prod[img]["+imgNo+"]");
+        var input= document.createElement("input");
+        input.setAttribute("type","text");
+        input.setAttribute("name","Prod[img]["+imgNo+"]");
+        input.setAttribute("placeholder","Image URL*")
+        var form=document.forms[0];
+        var newURL= document.createElement("div");
+        newURL.appendChild(label);
+        newURL.appendChild(input);
+        form.insertBefore(newURL,form.childNodes[imgNo+2]);
+        if(imgNo===1)
+            document.getElementById('add-img').style.display='none';
+    })
+    document.getElementById('add-author').addEventListener('click', ()=>{
+        authorNo++;
+        var label= document.createElement("label");
+        label.innerHTML= 'Author Name '+ (authorNo+1) +' :';
+        label.setAttribute("for","Prod[author]["+authorNo+"]");
+        var input= document.createElement("input");
+        input.setAttribute("type","text");
+        input.setAttribute("name","Prod[author]["+authorNo+"]");
+        input.setAttribute("placeholder","Author Name*")
+        var form=document.forms[0];
+        var newAuthor= document.createElement("div");
+        newAuthor.appendChild(label);
+        newAuthor.appendChild(input);
+        form.insertBefore(newAuthor,form.childNodes[authorNo+imgNo+7]);
+    })
+</script>
+
+<%- include("partials/footer") %>

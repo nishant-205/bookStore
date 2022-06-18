@@ -1,0 +1,438 @@
+@import './variables';
+
+
+.acc-cont{
+    @include flex(row,space-evenly,stretch);
+    padding: 7em 0;
+    font-size: 16px;
+    overflow: hidden;
+
+    .left{
+        @include flex(column,flex-start,stretch);
+        min-width:17em;
+        .info{
+            background: transparent;
+            box-shadow: 0 0 3px 0 rgba(255,255,255,0.4);
+            padding: 0.6em;
+            
+            @include flex(row,flex-start);
+            border-radius: 2px;
+            margin-bottom: 2em;
+            img{
+                border-radius: 50%;
+                height: 3.7rem;
+                width: 3.7rem;
+                margin-right: 0.6em;
+            }
+            div{
+                @include flex(column,flex-start,stretch);
+            }
+            .name{
+                color:$text;
+                text-transform: uppercase;
+            }
+            .mail{
+                color: rgba(221,221,221,0.6);
+            }
+        }
+        .item{
+            background: transparent;
+            box-shadow: 0 0 3px 0 rgba(255,255,255,0.4);
+            padding: 1.25em 1.5em;
+            @include flex(row,flex-start,stretch);
+            border-radius: 2px;
+            margin: 0.125rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            color: $text;
+
+            a{
+                text-decoration: none;
+                color: $text;
+                font-size: 1em;
+                width: 100%;
+            }
+            &.red{
+                background: $red-btn;
+                margin: 1em 0 0;
+                &:hover{
+                    background: $red-btn-hover;
+                }
+            }
+            &.active{
+                background: $active-sel;
+            }
+        }
+    }
+    .right{
+        background: transparent;
+        box-shadow: 0 0 3px 0 rgba(255,255,255,0.4);
+        color: $text;
+        padding:2em;
+        width: 60%;
+        h1{
+            margin-bottom: 1em;
+        }
+    }
+
+    // Profile Div
+    #r-prof{
+        .mail-pass{
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            @include flex(column,space-between,stretch);
+            padding-bottom: 2em;
+        }
+        .chng-pass-link{
+            color: rgba(122, 135, 179, 0.8);
+            padding: 1em 0 0;
+            width: fit-content;
+            cursor: pointer;
+        }
+        .change-pass{
+            padding: 1em;
+            margin-top:1em;
+            display: none;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .gi{
+            padding-top: 2em;
+        }
+        .gi-form{
+            padding-top: 1em;
+            @include flex(row,space-between,stretch);
+            flex-wrap: wrap;
+            .fl{
+                display: flex;
+                padding: 2em;
+                margin:1em;
+                flex-grow: 1;
+                flex-shrink: 1;
+                flex-direction: column;
+                border: 1px solid rgba(255,255,255,0.05)
+            }
+            .fr{
+                border: 1px solid rgba(255,255,255,0.05);
+                display: flex;
+                padding: 2em;
+                flex-grow: 1;
+                flex-shrink: 1;
+                margin: 1em;
+                flex-direction: column;
+            }
+        }
+        input{
+            outline:none;
+            border:none;
+            line-height: 2em;
+            padding: 0 4px;
+            border-radius: 2px;
+            background: $input-color;
+            color: $black;
+            font-size: 1em;
+            max-width: 18em;
+        }
+        input[name="mail"]{
+            margin-left: 1em;
+            cursor: not-allowed;
+            max-width: 20em;
+            width: 20em;
+        }
+        label{
+            font-size: 1.15em;
+        }
+        .ig{
+            @include flex(column,flex-start,stretch);
+            input{
+                margin: 1em 0;
+                cursor: text;
+            }
+        }
+        .gi-head{
+            @include flex(row,space-between,stretch);
+            input[type="submit"]{
+                height: 2em;
+                background:$green-btn;
+                padding: 0 1em;
+                cursor: pointer;
+                text-transform: uppercase;
+                &:hover{
+                    background: $green-btn-hover;
+                }
+            }
+        }
+    }
+    // Profile Div END
+
+
+    // Orders Div
+
+    #r-ord{
+        .ord-cont{
+            @include flex(row, flex-start, stretch);
+            flex-wrap: wrap;
+            padding-top: 1em;
+            .item-cont{
+                display: block;
+            }
+        }
+    }
+
+    // Orders Div END
+
+    // Wishlist Div
+
+    #r-wl{
+        .wl-cont{
+            @include flex(row, flex-start, stretch);
+            flex-wrap: wrap;
+            padding-top: 1em;
+            .item-cont{
+                box-shadow: 0 0 2px 0 rgba(221, 221, 221, 0.2);
+                padding: 1em;
+                margin-bottom: 1em;
+                background: transparent;
+                width:100%;
+                flex-shrink: 1;
+                border-radius: 1px;
+                @include flex(row,flex-start,stretch);
+                .img-cont{
+                    width: 9em;
+                    padding: 0.2em 0;
+                    background-color: rgba(255,255,255,0.01);
+                    margin-right: 1em;
+                    @include flex(row,center,center);
+                    img{
+                        width: 6em;
+                    }
+                }
+                .det-cont{
+                    padding: 0 0.5em;
+                    flex-grow: 1;
+                    @include flex(column, space-evenly, flex-start);
+                    .name{
+                        font-size: 1.2em;
+                    }
+                    .author{
+                        font-size: 1em;
+                    }
+                    .publisher{
+                        font-size: 0.9em;
+                    }
+                    .price{
+                        font-size: 1em;
+                    }
+                }
+                .but{
+                    justify-self: flex-end;
+                    @include flex(row, flex-end,flex-end);
+                    .cart{
+                        position: absolute;
+                        right: 4em;
+                        background: $nav-color-end;
+                        height:2.1em;
+                        min-width:2.1em;
+                        border-radius: 2.1em;
+                        position: relative;
+                        i{
+                            color: $dark-on-nav;
+                            height: 1.6em;
+                            width:1.6em;
+                            font-size: 1.1em;
+                            right: 0;
+                            position: absolute;
+                            text-decoration: none;
+                            top:50%;
+                            transform: translate(-0.16em,-50%);
+                            border-radius: 50%;
+                            @include flex();
+                            transition: 0.4s;
+                            &:hover{
+                                background: $text;
+                            }
+                        }
+                    }
+                    .remove{
+                        position: relative;
+                        right: 2em;
+                        background: $nav-color-end;
+                        height:2.1em;
+                        min-width:2.1em;
+                        border-radius: 2.1em;
+                        i{
+                            color: $dark-on-nav;
+                            height: 1.6em;
+                            width:1.6em;
+                            font-size: 1.1em;
+                            right: 0;
+                            position: absolute;
+                            text-decoration: none;
+                            top:50%;
+                            transform: translate(-0.16em,-50%);
+                            border-radius: 50%;
+                            @include flex();
+                            transition: 0.4s;
+                            &:hover{
+                                background: $text;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Wishlist Div END
+
+    // Address Div
+    #r-addr{
+        .addr-cont{
+            display: flex;
+            flex-flow: row wrap;
+            .addr-box{
+                box-shadow: 0 0 2px 0 rgba(221, 221, 221, 0.2);
+                padding: 0.5em 0.8em 1.5em 2em;
+                margin: 1em 2em;
+                background: transparent;
+                width: 40%;
+                height: 11.2em;
+                flex-grow: 1;
+                flex-shrink: 1;
+                border-radius: 1px;
+                @include flex(column,space-evenly,stretch);
+                #addr-id{
+                    display:none;
+                }
+                .icon{
+                    align-self: flex-end;
+                    text-decoration: none;
+                    color: $text;
+                    cursor: pointer;
+                }
+                &.active{
+                    background: $active-sel;
+                }
+            }
+            #new-addr{
+                text-align: center;
+                i{
+                    font-size: 3.5em;
+                    color: $active-sel;
+                    cursor: pointer;
+                }
+                i+div{
+                    text-decoration: none;
+                    color:inherit;
+                    cursor: pointer;
+                    margin: 0 auto;
+                    width: fit-content;
+                }
+            }
+        }
+        .addr-form, .addr-edit{
+            padding: 1em;
+            display: none;
+            .sub-head{
+                @include flex(row,space-between);
+                h3{
+                    padding-bottom: 1em;
+                }
+                .close-btn{
+                    font-size: 1.5em;
+                    cursor: pointer;
+                }
+            }
+            form{
+                display: flex;
+                flex-direction:column;
+                div{
+                    display: flex;
+                    flex-flow: row wrap;
+                    justify-content: space-between;
+                }
+                input[type="text"]{
+                    outline:none;
+                    border-radius: 2px;
+                    border:none;
+                    line-height: 2em;
+                    padding: 0 4px;
+                    max-width: 40%;
+                    height: 2.4em;
+                    background: $input-color;
+                    color: $black;
+                    font-size: 1em;
+                    margin:1em;
+                    flex-grow:1;
+                    flex-shrink:1;
+                }
+                input[type="submit"]{
+                    align-self: flex-end;
+                    width: 6em;
+                    height: 2.5em;
+                    font-size: 1em;
+                    cursor: pointer;
+                    margin-top: 1em;
+                    border:none;
+                    outline:none;
+                    background: $green-btn;
+                    border-radius: 2px;
+                    text-transform: uppercase;
+                    &:hover{
+                        background: $green-btn-hover;
+                    }
+                }
+                .submit{
+                    @include flex(row, flex-end);
+                    input[value="Delete"]{
+                        background: $red-btn;
+                        margin-right: 1em;
+                        &:hover{
+                            background: $red-btn-hover;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+    // Address Div END
+}
+@media screen and (max-width: 920px){
+    .acc-cont{
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 768px){     
+        
+    .acc-cont .left .item{
+        display: none;;
+    }
+    .acc-cont{
+        flex-direction: column;
+        align-items: center;
+        .left{
+            @include flex(column,center);
+            min-width: 16em;
+            .info{
+                min-width: inherit;
+            }
+        } 
+    }
+    .acc-cont .info{
+        width: fit-content;
+    }
+    .acc-cont .right{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 450px){
+    .acc-cont{
+        font-size: 10px;
+    }
+}
+@media screen and (max-width: 360px){
+    .acc-cont{
+        font-size: 8px;
+    }
+}

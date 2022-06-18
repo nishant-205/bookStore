@@ -1,0 +1,470 @@
+<%-include ('partials/header.ejs') %>
+<link rel="stylesheet" href="/css/product.css">
+<div class="whole_NB">
+    <div class="front_back_NB">
+        <div class="front_NB small_pic_view_NB">
+            <img class="front1_NB" src="<%=product.img[0]%>" alt="">
+        </div>
+        <% if(product.img[1]) { %>
+            <div class="back_NB small_pic_view_NB">
+                <img class="back1_NB" src="<%=product.img[1]%>" alt="">
+            </div>
+        <% } %>
+    </div>
+
+    <div class="images_NB">
+        <div class="main_image_NB">
+            <img src="<%=product.img%>" alt="">
+                <div class="front1_back1_NB">
+                    <span class="front2_NB small1_pic_view_NB">
+                        <img class="front111_NB" src="<%=product.img%>" alt="">
+                    </span>
+                    <span class="back2_NB small1_pic_view_NB">
+                        <img class="back111_NB" src="<%=product.img%>" alt="">
+                    </span>
+                </div>
+            <a class="add_to_cart_NB final_button"><button>ADD TO CART</button></a>
+            <div style="display: none;" class="prodId"><%=product._id%></div>
+            <a class="buy_now_NB final_button"><button>BUY NOW</button></a>
+        </div>
+    </div>
+    <div class="all_about_NB">
+        <div class="book_name_NB"><%=product.name%></div>
+
+        <div class="author_NB">by <a style=" text-decoration: none;"><%=product.author%></a> 
+            and published by <a style=" text-decoration: none;"><%=product.publisher%></a>
+        </div>
+        <span class="fa fa-star checked one6_star_NB"></span>
+        <span class="fa fa-star checked one7_star_NB"></span>
+        <span class="fa fa-star checked one8_star_NB"></span>
+        <span class="fa fa-star checked one9_star_NB"></span>
+        <span class="fa fa-star checked one10_star_NB"></span>
+        <span class="no_of_ratings_NB">(<%= product.totRating %>)</span>
+        <div class="book_price_NB">
+            <span>&#8377;</span>
+            <span class="rate_NB">
+                <%= Math.ceil((product.price_PaperBack -(product.price_PaperBack*product.discount)/100)).toFixed(2) %>
+            </span>
+        </div>
+        <div class="discount_NB">
+            <span class="discount_percent_NB"><%=product.discount%></span>
+            <span>% off</span>
+            <span class="original_price_NB" style="text-decoration: line-through;"><%=product.price_PaperBack%></span>
+            <div class="pin_NB">
+                <form action="" method="POST">
+                    <label for="pin" class="check_text_NB">Check for Delivery &nbsp; </label>
+                    <input type="PIN" name="pin" placeholder="Enter your PIN Code">
+                    <button type="submit">Check</button>
+                </form>
+                <div class="delivery_from_to_NB">
+                    <span style="margin-right: 2px solid #ddd;">
+                    </span>
+                    <div>
+                        <span>Delivery Fee</span>
+                        <span>&#8377;</span>
+                        <span class="delivery_fee_NB">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="version_NB">
+            <% if(product.price_Kindle) { %>
+            <button class="first_button_NB">
+                <div>Kindle Edition</div>
+                <div class="kindle_edition_NB">
+                    <span>&#8377;</span>
+                    <span class="kindle_edition_price_NB">
+                        <%= product.price_Kindle %>
+                    </span>
+                </div>
+            </button>
+            <% } %>
+            <% if(product.price_PaperBack) { %>
+            <button class="second_button_NB">
+                <div>Paperback</div>
+                <div class="paperback_edition_NB">
+                    <span>&#8377;</span>
+                    <span class="paperback_edition_price_NB">
+                        <%= product.price_PaperBack %>
+                    </span>
+                </div>
+            </button>
+            <% } %>
+            <% if(product.price_HardCover) { %>
+            <button class="third_button_NB">
+                <div>Hardcover</div>
+                <div class="hardcover_edition_NB">
+                    <span>&#8377;</span>
+                    <span class="hardcover_edition_price_NB">
+                        <%= product.price_HardCover %>
+                    </span>
+                </div>
+            </button>
+            <% } %>
+        </div>
+        <div class='all_details_NB'>
+            <h2 style="font-weight: normal;">Key Features:</h2>
+            <ul>
+                <li>Author: <%=product.author%></li>
+                <li><%=product.page%> Pages</li>
+                <li>Language: <%=product.language%></li>
+                <li>Publisher: <%=product.publisher%></li>
+            </ul>
+            <h2 style="font-weight: normal;">Specifications:</h2>
+            <div class='key_Value_NB'>
+                <div class='key_NB'>
+                    <p>Book</p>
+                    <p>Author(s)</p>
+                    <p>Binding</p>
+                    <p>Publishing Date</p>
+                    <p>Publisher Name</p>
+                    <p>Edition</p>
+                    <p>Number of Pages</p>
+                    <p>Language</p>
+                </div>
+                <div class='value_NB'>
+                    <p><%=product.name%></p>
+                    <p><%=product.author%></p>
+                    <p class="binding_NB">Paperback</p>
+                    <p><%=product.publishing_date%></p>
+                    <p><%=product.publisher%></p>
+                    <p><%=product.edition%></p>
+                    <p><%=product.page%></p>
+                    <p><%=product.language%></p>
+                </div>
+            </div>
+        </div>
+        <div class="about_NB">
+            <span> About this Book</span>
+        </div>
+        <div class="text_NB" style="text-align: left;">
+            <%=product.description%>
+        </div>
+        <div class='Rating_setup_NB'>
+            <div class="heading_rating_NB">
+                <span style="font-weight: normal;">Ratings & Reviews</span>
+                <span class="show_of_numbers_NB">(<%= product.totRating %> ratings & <%= product.totComments %> reviews) </span>
+            </div>
+            <div class='five_star_NB yuri_star' style="margin-top: 25px;">
+                <div>5 Star</div>
+                <div class='rating_width_NB width5_NB'></div>
+                <div class='number_of_rating'>
+                    <%= product.star[4] %>
+                </div>
+            </div>
+            <div class='four_star_NB yuri_star'>
+                <div>4 Star</div>
+                <div class='rating_width_NB width4_NB'></div>
+                <div class='number_of_rating'>
+                    <%= product.star[3] %>
+                </div>
+            </div>
+            <div class='three_star_NB yuri_star'>
+                <div>3 Star</div>
+                <div class='rating_width_NB width3_NB'></div>
+                <div class='number_of_rating'>
+                    <%= product.star[2] %>
+                </div>
+            </div>
+            <div class='two_star_NB yuri_star'>
+                <div>2 Star</div>
+                <div class='rating_width_NB width2_NB'></div>
+                <div class='number_of_rating'>
+                    <%= product.star[1] %>
+                </div>
+            </div>
+            <div class='one_star_NB yuri_star'>
+                <div>1 Star</div>
+                <div class='rating_width_NB width1_NB'></div>
+                <div class='number_of_rating'>
+                    <%= product.star[0] %>
+                </div>
+            </div>
+        </div>
+        <% if(currentUser) {%>
+        <div class='form_for_customer_rating_NB'>
+            <form action='/product/<%=product._id%>/comment-rating' method='POST'>
+                <h3>Rate this product</h3>
+                <input type='radio' name='rate' id='rate-5' value='1' required>
+                <label for='rate-5'><span class='fa fa-star checked1 one1_star_NB'></span></label>
+                <input type='radio' name='rate' id='rate-4' value='2' >
+                <label for='rate-4'><span class='fa fa-star checked1 two2_star_NB'></span></label>
+                <input type='radio' name='rate' id='rate-3' value='3'>
+                <label for='rate-3'><span class='fa fa-star checked1 three3_star_NB'></span></label>
+                <input type='radio' name='rate' id='rate-2' value='4'>
+                <label for='rate-2'><span class='fa fa-star checked1 four4_star_NB'></span></label>
+                <input type='radio' name='rate' id='rate-1' value='5'>
+                <label for='rate-1'><span class='fa fa-star checked1 five5_star_NB'></span></label>
+
+                <h3>Write a Review</h3>
+                <textarea name='title' class="area_text_NB" id='text_area1_NB' type="text"
+                    placeholder='Title (optional)'></textarea>
+                <textarea name='comment' class="area_text_NB" id='text_area_NB' type="text"
+                    placeholder='Review'></textarea>
+                <div>
+                    <button type='submit' class='comment_btn_NB'><span>Submit</span></button>
+                </div>
+            </form>
+        </div>
+        <% } %>
+        <div class="whole_review_NB final_comment_section">
+            <% let count=1; %>
+                <% for(let c of product.comments){ %>
+                    <% if(count<=3 && c.comment.length!=0){ %>
+                        <div class='one_st_comment_NB'>
+                            <div class='one_box_NB'><span style='color: rgb(176, 228, 72);'>
+                                    <%= c.rating %>
+                                        <i class="fa fa-star checked1"></i>
+                                </span><span class="commet_title_NB">&nbsp;&nbsp;&nbsp;<%= c.title%></span>
+                                <span class="date_of_comment_NB">
+                                    <%= c.date.toString().slice(0,24)%>
+                                </span>
+                            </div>
+                            <div class='one_text_NB' style="text-align: left;">
+                                <%= c.comment %>
+                            </div>
+                            <div class="comment_by_person_NB"><%=c.userName %></div>
+                        </div>
+                        <% count++ %>
+                            <% } %>
+                                <% } %>
+        </div>
+        <div class="whole1_review1_NB final_comment_section">
+            <% for(let c of product.comments){ %>
+                <% if(c.comment.length!=0){ %>
+                    <div class='one_st_comment_NB'>
+                        <div class='one_box_NB'><span style='color: rgb(176, 228, 72);'>
+                                <%= c.rating %>
+                                <i class="fa fa-star checked1"></i>
+                            </span><span class="commet_title_NB">&nbsp;&nbsp;&nbsp;<%= c.title%></span>
+                            <span class="date_of_comment_NB">
+                                <%= c.date.toString().slice(0,24)%>
+                            </span>
+                        </div>
+                        <div class='one_text_NB'>
+                            <%= c.comment %>
+                        </div>
+                        <div class="comment_by_person_NB"><%=c.userName %></div>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+        <%if(count>3){%>
+            <div class="see_more_NB"><a>Show more</a></div>
+        <% } %>
+    </div>
+</div>
+</body>
+<script>
+    let finalx_width_NB;
+    let s = window.matchMedia("(max-width: 1671px) and (min-width: 1300px)")
+    let t = window.matchMedia("(max-width: 1299px) and (min-width: 1025px)")
+    let u = window.matchMedia("(max-width: 1024px) and (min-width: 769px)")
+    let v = window.matchMedia("(max-width: 768px) and (min-width: 550px)")
+    let o = window.matchMedia("(max-width: 549px) and (min-width: 426px)")
+    let p = window.matchMedia("(max-width: 426px) and (min-width: 350px)")
+    let q = window.matchMedia("(max-width: 349px) and (min-width: 280px)")
+    let final_width_NB;
+    if (s.matches) {
+        finalx_width_NB = 360;
+    }
+    if (t.matches) {
+        finalx_width_NB = 310;
+    }
+    if (u.matches) {
+        finalx_width_NB = 260;
+    }
+    if (v.matches) {
+        finalx_width_NB = 200;
+    }
+    if (o.matches) {
+        finalx_width_NB = 200;
+    }
+    if (p.matches) {
+        finalx_width_NB = 200;
+    }
+    if (q.matches) {
+        finalx_width_NB = 170;
+    }
+
+    let width1_NB = document.querySelector('.one_star_NB .width1_NB');
+    let width2_NB = document.querySelector('.two_star_NB .width2_NB');
+    let width3_NB = document.querySelector('.three_star_NB .width3_NB');
+    let width4_NB = document.querySelector('.four_star_NB .width4_NB');
+    let width5_NB = document.querySelector('.five_star_NB .width5_NB');
+
+    width1_NB.style.width = "2px";
+    width2_NB.style.width = "2px";
+    width3_NB.style.width = "2px";
+    width4_NB.style.width = "2px";
+    width5_NB.style.width = "2px";
+    
+    // let e = (product.star[3] / number_of_ratings)*200 + "px";
+    let e = (<%= product.star[0] %> / <%= product.totRating %>)*finalx_width_NB+ "px";
+
+    width1_NB.style.width = e;
+    let f = (<%= product.star[1] %> / <%= product.totRating %>)*finalx_width_NB+ "px";
+
+    width2_NB.style.width = f;
+    let g = (<%= product.star[2] %> / <%= product.totRating %>)*finalx_width_NB+ "px";
+
+    width3_NB.style.width = g;
+    let h = (<%= product.star[3] %> / <%= product.totRating %>)*finalx_width_NB+ "px";
+
+    width4_NB.style.width = h;
+    let i = (<%= product.star[4] %> / <%= product.totRating %>)*finalx_width_NB+ "px";
+
+    width5_NB.style.width = i;
+
+    let one6_star_NB = document.querySelector('.one6_star_NB');
+    let one7_star_NB = document.querySelector('.one7_star_NB');
+    let one8_star_NB = document.querySelector('.one8_star_NB');
+    let one9_star_NB = document.querySelector('.one9_star_NB');
+    let one10_star_NB = document.querySelector('.one10_star_NB');
+
+    let avg_rating_NB = (<%= product.star[4] %>* 5 + <%=product.star[3] %>* 4 + <%=product.star[2] %>* 3 + <%=product.star[1] %>* 2 + <%=product.star[0] %>) / <%= product.totRating %>
+    if (avg_rating_NB >= 1 && avg_rating_NB < 2) {
+        one6_star_NB.style.color = "red";
+    }
+    else if (avg_rating_NB >= 2 && avg_rating_NB < 3) {
+        one6_star_NB.style.color = "yellow"
+        one7_star_NB.style.color = "yellow"
+    }
+    else if (avg_rating_NB >= 3 && avg_rating_NB < 4) {
+        one6_star_NB.style.color = "yellow"
+        one7_star_NB.style.color = "yellow"
+        one8_star_NB.style.color = "yellow"
+    }
+    else if (avg_rating_NB >= 4 && avg_rating_NB < 5) {
+        one6_star_NB.style.color = "green"
+        one7_star_NB.style.color = "green"
+        one8_star_NB.style.color = "green"
+        one9_star_NB.style.color = "green"
+    }
+    else if (avg_rating_NB == 5) {
+        one6_star_NB.style.color = "green"
+        one7_star_NB.style.color = "green"
+        one8_star_NB.style.color = "green"
+        one9_star_NB.style.color = "green"
+        one10_star_NB.style.color = "green"
+    }
+    let comment_btn_NB = document.querySelector('.comment_btn_NB')
+
+
+    let back1_NB = document.querySelector('.back1_NB');
+    let back111_NB = document.querySelector('.back111_NB');
+    let main_image_NB = document.querySelector('.main_image_NB img')
+    let front1_NB = document.querySelector('.front1_NB');
+    let front111_NB = document.querySelector('.front111_NB');
+
+    if(back1_NB) {
+        back1_NB.addEventListener("mouseover", function () {
+            main_image_NB.src = back1_NB.src;
+        })
+    }
+    if(front1_NB) {
+        front1_NB.addEventListener("mouseover", function () {
+            main_image_NB.src = front1_NB.src;
+        })
+    }
+    if(back111_NB) {
+        back111_NB.addEventListener("mouseover", function () {
+            main_image_NB.src = back111_NB.src;
+        })
+    }
+    if(front111_NB) {
+        front111_NB.addEventListener("mouseover", function () {
+            main_image_NB.src = front111_NB.src;
+        })
+    }
+    let add_to_cart_NB = document.querySelector('.add_to_cart_NB');
+    let first_button_NB = document.querySelector('.first_button_NB');
+    let second_button_NB = document.querySelector('.second_button_NB');
+    let third_button_NB = document.querySelector('.third_button_NB');
+    let rate_NB = document.querySelector('.rate_NB');
+    let binding_NB = document.querySelector('.binding_NB');
+    let original_price_NB=document.querySelector('.original_price_NB');
+
+    if(first_button_NB) {
+        first_button_NB.addEventListener("click", function () {
+            first_button_NB.style.border = "2px solid rgb(95, 35, 68)";
+            if(second_button_NB) second_button_NB.style.border = "1px solid #ddd";
+            if(third_button_NB) third_button_NB.style.border = "1px solid #ddd";
+            original_price_NB.innerHTML="<%=product.price_Kindle %>";
+            rate_NB.innerHTML = "<%= Math.ceil((product.price_Kindle-(product.price_Kindle*product.discount)/100)).toFixed(2) %>";
+            binding_NB.innerHTML = "KindleEdition";
+
+        })
+    }
+    if(second_button_NB) {
+        second_button_NB.addEventListener("click", function () {
+            if(first_button_NB) first_button_NB.style.border = "1px solid #ddd"
+            second_button_NB.style.border = "2px solid rgb(95, 35, 68)"
+            if(third_button_NB) third_button_NB.style.border = "1px solid #ddd"
+            original_price_NB.innerHTML="<%=product.price_PaperBack %>";
+            rate_NB.innerHTML = "<%= Math.ceil((product.price_PaperBack -(product.price_PaperBack*product.discount)/100)).toFixed(2) %>";
+            binding_NB.innerHTML = "Paperback";
+        })
+    }
+    if(third_button_NB) {
+        third_button_NB.addEventListener("click", function () {
+            if(first_button_NB) first_button_NB.style.border = "1px solid #ddd"
+            if(second_button_NB) second_button_NB.style.border = "1px solid #ddd"
+            third_button_NB.style.border = "2px solid rgb(95, 35, 68)"
+            original_price_NB.innerHTML="<%=product.price_HardCover %>";
+            rate_NB.innerHTML = "<%= Math.ceil((product.price_HardCover -(product.price_HardCover*product.discount)/100)).toFixed(2) %>";
+            binding_NB.innerHTML = "Hardcover";
+        })
+    }
+    // for showing comment
+
+    let count_for_extension = 0;
+    let version_NB = document.querySelector('.version_NB');
+    let pin_NB = document.querySelector('.pin_NB');
+    let see_more_NB = document.querySelector('.see_more_NB');
+    let whole1_review1_NB = document.querySelector('.whole1_review1_NB');
+    let whole_review_NB = document.querySelector('.whole_review_NB');
+
+    let text_NB = document.querySelector('.text_NB');
+    let about_NB = document.querySelector('.about_NB');
+    let Rating_setup_NB = document.querySelector('.Rating_setup_NB');
+
+    let details_NB = document.querySelector('.details_NB');
+    let whole_NB = document.querySelector('.whole_NB');
+    let all_details_NB = document.querySelector('.all_details_NB');
+    let form_for_customer_rating_NB = document.querySelector('.form_for_customer_rating_NB');
+    let discount_NB = document.querySelector('.discount_NB');
+    let book_price_NB = document.querySelector('.book_price_NB');
+
+    if(see_more_NB) {
+        see_more_NB.addEventListener("click", function () {
+            if (count_for_extension % 2 == 0) {
+                version_NB.style.display = "none";
+                pin_NB.style.display = "none";
+                text_NB.style.display = "none";
+                about_NB.style.display = "none";
+                Rating_setup_NB.style.display = "none";
+                see_more_NB.innerHTML = "<div class='see_more_NB'><a> Show less</a></div>";
+                whole1_review1_NB.style.display = "block";
+                whole_review_NB.style.display = "none";
+                count_for_extension++;
+            }
+            else if (count_for_extension % 2 == 1) {
+                version_NB.style.display = "block";
+                pin_NB.style.display = "block";
+                text_NB.style.display = "block";
+                about_NB.style.display = "block";
+                Rating_setup_NB.style.display = "block";
+                see_more_NB.innerHTML = "<div class='see_more_NB'><a>Show more </a></div>";
+                whole_review_NB.style.display = "block";
+                whole1_review1_NB.style.display = "none";
+                count_for_extension++;
+            }
+        })
+    }
+
+</script>
+<script src="/js/product.js"></script>
+
+<%- include ('partials/footer.ejs') %>

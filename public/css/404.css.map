@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,QAAQ,CAAA;EC0BJ,OAAO,EAAC,IAAI;EACZ,cAAc,EAFK,GAAG;EAGtB,eAAe,EAHiB,MAAM;EAItC,WAAW,EAJmC,MAAM;EDvBpD,QAAQ,EAAE,QAAQ;EAClB,MAAM,EAAE,KAAK;CAKhB;;AARD,AAII,QAJI,CAIJ,GAAG,CAAA;EACC,UAAU,EAAE,KAAK;EACjB,MAAM,EAAE,OAAO;CAClB",
+    "sources": [
+        "../../sass/404.scss",
+        "../../sass/_variables.scss"
+    ],
+    "names": [],
+    "file": "404.css"
+}

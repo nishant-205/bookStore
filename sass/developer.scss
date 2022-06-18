@@ -1,0 +1,110 @@
+@import "./variables";
+
+.container{
+    @include flex();
+    flex-wrap: wrap;
+    min-height: 50rem;
+    position: relative;
+    padding: 5rem 2rem;
+    margin-bottom: 2rem;
+    .head{
+        font-weight: bold;
+        font-size: 10rem;
+        position: absolute;
+        color: $text;
+        top: 12rem;
+        padding-bottom: 1rem;
+        animation: shrink 1s linear;
+        animation-fill-mode: forwards;
+    }
+    @keyframes shrink{
+        0%{
+            align-self: center;
+        }
+        100%{
+            font-size: 5rem;
+            top: 6rem;
+        }
+    }
+    .sub-cont{
+        @include flex(row,space-evenly);
+        flex-wrap: wrap;
+        opacity: 0;
+        position: relative;
+        min-height: 30rem;
+        top: 5rem;
+        margin: 4rem 0;
+        animation: fadeIn 1s linear;
+        animation-fill-mode: forwards;
+        animation-delay: 1s;
+        .card{
+            height: 24rem;
+            width: 16rem;
+            margin: 1rem;
+            border-radius: 2px;
+            box-shadow: 0 0 5px 0 rgba(255, 255, 255, 0.15);
+            .img-cont{
+                height: 15rem;
+                margin: 0.5rem 1rem;
+                @include flex();
+                border-radius: 50%;
+                color: $active-sel;
+                img{
+                    height: inherit;
+                    object-fit: fill;
+                    border-radius: 2px;
+                }
+            }
+            .box{
+                text-align: center;
+                margin: 1rem 1rem 0;
+                color: $text;
+                border-radius: 2px;
+                letter-spacing: 1px;
+                font-size: 1.1rem;
+            }
+            .icons{
+                text-align: center;
+                padding-top: 2rem;
+                @include flex();
+                a {
+                    text-decoration: none;
+                    i{
+                        height: 2rem;
+                        width: 2rem;
+                        padding-top: 0.35rem;
+                        border-radius: 5px;
+                        font-size: 1.4rem;
+                    }
+                }
+                .social{
+                    height: 2rem;
+                    width: 2rem;
+                    margin: 1rem;
+                    @include flex();
+                    border-radius: 5px;
+                    color: $text;
+                    // background-color: rgb(8, 76, 99);
+                }
+                .linkedin{
+                    background-color: rgb(8, 76, 99);
+                }
+                .github{
+                    color: $black;
+                    background-color: white;
+                }
+                .email{
+                    background-color: rgb(218, 54, 54);
+                }   
+            }
+        }
+    }
+    @keyframes fadeIn{
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
+}

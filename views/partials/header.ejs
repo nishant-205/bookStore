@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Set *res.locals.title* as the title before rendering page in the route-->
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <!-- NavBar -->
+    <header id="header">
+        <nav class="left">
+            <div class="menu">
+                <div class="burger">
+                </div>
+            </div>
+        </nav>
+        <a href="/" class="logo"><i class="fas fa-book-open"></i>bookStore</a>
+        <nav class="right">
+            <div class="search-box">
+                <input class="search-txt" type="text" placeholder="Search" id="search" name="">
+                <a class="search-btn" href="">
+                    <i class="fas fa-search"></i>
+                </a>
+            </div>
+            <div class="acc-box">
+                <% if(!currentUser) {%>
+                    <a href="/login-register" class="acc" id="acc">
+                        <i class="fas fa-sign-in-alt fa-lg"></i>
+                    </a>
+                <% } else { %>
+                    <a href="/profile" class="acc" id="acc">
+                        <i class="fas fa-user fa-lg"></i>
+                    </a>
+                <% } %>
+            </div>
+            <div class="wl-box">
+                <a href="/profile" class="wl wl-link">
+                    <i class="fas fa-bookmark"></i>
+                </a>
+            </div>
+            <div class="cart-box">
+                <a href="/cart" class="cart">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <%if(session.cart) {%>
+                <div class="qty-box">
+                    <div class="cart_Qty"><%=session.cart.totalQty%></div>
+                </div>
+                <% } %>
+            </div>
+            <% if(currentUser) {%>
+                <div class="acc-drop" id="acc-drop">
+                    <div class="links">
+                        <a href="/profile" class="prof-link">
+                            <div class="icon">
+                                <i class="fas fa-user fa-lg"></i>
+                            </div>
+                            <span> Profile</span>
+                        </a>
+                    </div>
+                    <div class="links">
+                        <a href="/profile" class="ord-link">
+                            <div class="icon">
+                                <i class="fas fa-box-open"></i>
+                            </div>
+                            <span> Orders</span>
+                        </a>
+                    </div>
+                    <div class="links">
+                        <a href="/profile" class="wl-link">
+                            <div class="icon">
+                                <i class="fas fa-bookmark"></i>
+                            </div>
+                            <span> Wishlist</span>
+                        </a>
+                    </div>
+                    <div class="links">
+                        <a href="/profile" class="cpn-link">
+                            <div class="icon">
+                                <i class="fas fa-ticket-alt"></i>
+                            </div>
+                            <span> Coupons</span>
+                        </a>
+                    </div>
+                    <div class="links" style="border-bottom: 0;">
+                        <a href="/logout">
+                            <div class="icon"><i class="fas fa-sign-out-alt fa-lg"></i></div>
+                            <span> Logout</span>
+                        </a>
+                    </div>
+                </div>
+            <% } %>
+        </nav>
+    </header>
+    <% if(message && message.length) { %>
+        <div class="flash message">
+            <span><%= message %></span>
+            <span class="close-flash">&times;</span>
+        </div>
+    <% } if(error && error.length) { %>
+        <div class="flash error">
+            <span><%= error %></span>
+            <span class="close-flash">&times;</span>
+        </div>
+    <% } if(success && success.length) { %>
+        <div class="flash success">
+            <span><%= success %></span>
+            <span class="close-flash">&times;</span>
+        </div>
+    <% } %>
+
+
+<!-- Side Menu -->
+    <nav class="side-menu">
+        <a href="" class="link">Best Sellers</a>
+        <a href="" class="link">Shop by Authors</a>
+        <% if(!currentUser) { %>
+            <a href="/login-register" class="link">
+                Login/Register
+            </a>
+        <% } else { %>
+            <div class="sub-menu-tog">Account Options<i class="fa fa-caret-down"></i></div>
+            <div class="sub-menu-cont" style="display:none;">
+                <a href="/profile" class="sub-menu-opt prof-link">Profile</a>
+                <a href="/profile" class="sub-menu-opt ord-link">Orders</a>
+                <a href="/profile" class="sub-menu-opt wl-link">Wishlist</a>
+                <a href="/profile" class="sub-menu-opt cpn-link">Coupons </a>
+                <a href="/profile" class="sub-menu-opt addr-link">Address</a>
+                <a href="/profile" class="sub-menu-opt rfr-link">Refer and Earn</a>
+                <a href="/logout" class="sub-menu-opt">Log out</a>
+            </div>
+            
+        <% } %>
+        <a href="/dev" class="link">Developers</a>
+    </nav>
+
+<script>
+    $(function(){
+        $('#search').autocomplete({
+            source: function(req,res){
+                $.ajax({
+                    url:"/product/search",
+                    dataType:"jsonp",
+                    type:"GET",
+                    data:req,
+                    success: function(data)
+                    {
+                        console.log(data);
+                        res(data);
+                    },
+                    error: function(err){
+                        console.log("error while fetching data");
+                    }
+                })
+            },
+            minlength:1,
+            classes: {
+                "ui-autocomplete" : "search-res",
+            },
+            select:function(event,ui){
+                if(ui.item){
+                   if(ui.item.id.length>0)
+                   {
+                    $('#search').text(ui.item.label)
+                    window.location.href=`/product/${ui.item.id}`;
+                   }
+                }
+
+            }
+
+        });
+    });
+
+</script>
+
+

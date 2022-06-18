@@ -1,0 +1,260 @@
+<%-include ('partials/header.ejs') %>
+
+<link rel="stylesheet" href="/css/profile.css">
+
+<div class="acc-cont">
+    <div class="left">
+        <div class="info">
+            <img src="/svgs/undraw_profile_pic_ic5t.svg">
+            <div>
+                <div class="name"><%= user.name %></div>
+                <div class="mail"><%= user.email %></div>
+            </div>
+        </div>
+        <div class="item" id="l-prof">Profile</div>
+        <div class="item" id="l-ord">Orders</div>
+        <div class="item" id="l-wl">Wishlist</div>
+        <div class="item" id="l-cpn">Coupons</div>
+        <div class="item" id="l-addr">Address</div>
+        <div class="item" id="l-rfr">Refer and Earn</div>
+        <div class="item red"><a href="/logout">Logout</a></div>
+    </div>
+    <div class="right" id="r-prof">
+            <div class="mail-pass">
+                <h1>Profile</h1>
+                    <div>
+                        <label for="mail">Email</label>
+                        <input type="text" name="mail" value="<%=user.email%>" disabled>
+                    </div>
+                <div class="chng-pass-link">Change Password</div>
+                <form class="change-pass" action="/change-pass" method="POST" style="display: none;">
+                    <div class="ig">
+                        <label for="oldPass">Old Password</label>
+                        <input type="password" name="oldPass">
+                    </div>
+                    <div class="ig">
+                        <label for="newPass">New Password</label>
+                        <input type="password" name="newPass">
+                    </div>
+                    <input type="submit" value="Save">
+                </form>
+            </div>
+            <div class="gi">
+                <div class="gi-head">
+                    <h2>General Information</h2>
+                    <input type="submit" value="Save" onclick="document.getElementsByClassName('gi-form')[0].submit();">
+                </div>
+                <form action="/profile" method="POST" class="gi-form">
+                    <div class="fl">
+                        <div class="ig">
+                            <label for="name">Full Name</label>
+                            <input type="text" name="name" value="<%= user.name %>">
+                        </div>
+                        <div class="ig">
+                            <label for="gender">Gender</label>
+                            <label>
+                                <input type="radio" name="gender" value="male" <%= (user.gender=='male')? "checked" : "" %> > Male
+                            </label>
+                            <label>
+                                <input type="radio" name="gender" value="female" <%= (user.gender=='female')? "checked" : "" %>> Female
+                            </label>
+                            <label>
+                                <input type="radio" name="gender" value="other" <%= (user.gender=='other')? "checked" : "" %>> Other
+                            </label>
+                        </div>
+                    </div>
+                    <div class="fr">
+                        <div class="ig">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" name="dob" value="<%= new Date(user.dob-user.dob.getTimezoneOffset()*60000).toISOString().split('T')[0] %>">
+                        </div>
+                        <div class="ig">
+                            <label for="phno">Phone Number</label>
+                            <input type="text" name="phno" value="<%= user.phno %>">
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+    <div class="right" id="r-ord">
+        <h1>Orders</h1>
+        <!-- <div class="ord-cont">
+            <div class="item-cont">
+                <div class="head">
+                    <div>
+                        <i class="fa fa-caret-down"></i>
+                        <div class="ord-num">Order: </div>
+                    </div>
+                    <div class="gtotal">Grand Total: </div>
+                </div>
+                <div class="det">
+                    <div class="date">Date: </div>
+                    <div class="tot-item">Total Items:</div>
+                    <div class="status">Status: </div>
+                </div>
+                <div class="item">
+                    <div class="img-cont"><img src=""></div>
+                    <div class="name">Name</div>
+                    <div class="author">Author</div>
+                    <div class="price">&#8377; Price</div>
+                    <div class="qty"></div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <div class="right" id="r-wl">
+        <h1>Wishlist</h1>
+        <div class="wl-cont">
+            <% if(wl) {%>
+                <% for(let a of wl.wishlist) { %>
+                    <div class="item-cont">
+                        <div class="img-cont"><img src="<%= a.img%>"></div>
+                        <div class="det-cont">
+                            <div class="name"><%=a.name %></div>
+                            <div class="author"><%=a.author %></div>
+                            <div class="publisher"><%=a.publisher %></div>
+                            <div class="price">&#8377; <%=a.price_PaperBack %></div>
+                            <div class="product_id" style="display: none;"><%=a._id %></div>
+                        </div>
+                        <div class="but">
+                            <div class="cart">
+                                <i class="fas fa-shopping-cart"></i>  
+                            </div>           
+                            <div class="remove">
+                                <i class="fas fa-trash"></i>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+    <div class="right" id="r-cpn">
+        <h1>Coupons</h1>
+    </div>
+    <div class="right" id="r-addr">
+        <h1>Address</h1>
+        <div class="addr-cont">
+            <% for(let addr of user.addr){ %>
+                <% if(addr.isDefault) { %>
+                    <div class="addr-box active">
+                <% } else { %>
+                    <div class="addr-box">
+                <% } %>
+                    <div class="icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <span id="addr-id"><%=addr._id %></span>
+                    <div><b><%=addr.fname%> &nbsp;<%=addr.lname%></b></div>
+                    <div><%=addr.hno%>,&nbsp; <%=addr.street%>,</div>
+                    <div><%=addr.city%></div>
+                    <div><%=addr.state%></div>
+                    <div><%=addr.country%>,&nbsp; <%=addr.pcode%></div>
+                    <div>Mobile: <%=addr.mno%></div>
+                </div>
+            <% } %>
+            <div class="addr-box" id="new-addr">
+                <div>
+                    <i class="fas fa-plus-square"></i>
+                    <div>Add new address</div>
+                </div>
+            </div>
+        </div>
+        <div class="addr-form">
+            <div class="sub-head">
+                <h3>Add New Address</h3>
+                <div class="close-btn"><i class="fas fa-times"></i></div>
+            </div>
+            <form action="/addr" method="POST">
+                <div>
+                    <input type="text" name="Addr[fname]" placeholder="First Name*" required>
+                    <input type="text" name="Addr[lname]" placeholder="Last Name*" required>
+                </div>
+                <div>
+                    <input type="text" name="Addr[hno]" placeholder="House No, Building Name*" required>
+                    <input type="text" name="Addr[street]" placeholder="Street Name*" required>
+                </div>
+                <div>
+                    <input type="text" name="Addr[city]" placeholder="City/Town*" required>
+                    <input type="text" name="Addr[pcode]" placeholder="Postal Code*" required>
+                </div>
+                <div>
+                    <input type="text" name="Addr[state]" placeholder="State*" required>
+                    <input type="text" name="Addr[country]" placeholder="Country*" required>
+                </div>
+                <div>
+                    <input type="text" name="Addr[mno]" placeholder="Mobile*" required>
+                </div><br>
+                <label>
+                    <input type="checkbox" name="Addr[isDefault]" value="true">
+                    Make this your default address
+                </label>
+                <input type="submit" value="Save">
+            </form>
+        </div>
+        <div class="addr-edit">
+            <div class="sub-head">
+                <h3>Edit Address</h3>
+                <div class="close-btn"><i class="fas fa-times"></i></div>
+            </div>
+            <form action="/addr-edit" method="POST">
+                <div>
+                    <input type="text" name="Addr[fname]" placeholder="First Name*" value="" required>
+                    <input type="text" name="Addr[lname]" placeholder="Last Name*" value="" required>
+                </div>
+                <div>
+                    <input type="text" name="Addr[hno]" placeholder="House No, Building Name*" value="" required>
+                    <input type="text" name="Addr[street]" placeholder="Street Name*" value="" required>
+                </div>
+                <div>
+                    <input type="text" name="Addr[city]" placeholder="City/Town*" value="" required>
+                    <input type="text" name="Addr[pcode]" placeholder="Postal Code*" value="" required>
+                </div>
+                <div>
+                    <input type="text" name="Addr[state]" placeholder="State*" value="" required>
+                    <input type="text" name="Addr[country]" placeholder="Country*" value="" required>
+                </div>
+                <div>
+                    <input type="text" name="Addr[mno]" placeholder="Mobile*" value="" required>
+                </div><br>
+                <label>
+                    <input type="checkbox" name="Addr[isDefault]" value="true">
+                    Make this your default address
+                </label>
+                <input type="text" name="Addr[_id]" value="" style="display: none;">
+                <div class="submit">
+                    <input type="submit" value="Delete" id="del">
+                    <input type="submit" value="Save">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="right" id="r-rfr">
+        <h1>Refer and Earn</h1>
+    </div>
+</div>
+
+
+
+<script>
+    window.onload=function profileFunc() {
+        var no=localStorage.getItem('linkNo');
+        if(no==1)
+            profBtn.click();
+        else if(no==2)
+            ordBtn.click();
+        else if(no==3)
+            wlBtn.click();
+        else if(no==4)
+            cpnBtn.click();
+        else if(no==5)
+            addrBtn.click();
+        else if(no==6)
+            rfrBtn.click();
+        localStorage.setItem('linkNo','1');
+    }
+</script>
+<script src="/js/profile.js"></script>
+
+
+<%- include ('partials/footer.ejs') %>

@@ -1,0 +1,246 @@
+@import './variables';
+
+.wrapper{
+    @include flex();
+    font-size: 16px;
+
+    img{
+        position: absolute;
+        top: 5.5rem;
+        width: 5.5em;
+        height: 5.5em;
+        border-radius: 50%;
+        border-style: solid;
+        border-width: 1px;
+        z-index: 200;
+    }
+    .container{
+        position: relative;
+        margin: 7rem 0;
+        border-radius: 2px;
+        background: transparent;
+        box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.22);
+        overflow: hidden;
+        width: 45em;
+        max-width: 100%;
+        min-height: 30em;
+        .form{
+            @include flex(column);
+            padding: 0 30px;
+            height: 100%;
+            text-align: center;
+            color: $text;
+            .social-cont{
+                margin: 1.25em 0;
+                width: 80%;
+                @include flex(row,space-evenly,stretch);
+                a{
+                    border: 1px solid #ddd;
+                    border-radius: 50%;
+                    @include flex();
+                    display: inline-flex;
+                    margin: 1em 0;
+                    height: 2.5em;
+                    width: 2.5em;
+                    text-decoration: none;
+                    i{
+                        font-size: 1.2em;
+                        color: $text;
+                    }
+                }
+            }
+            input{
+                background-color: $input-color;
+                border: none;
+                padding: 12px 15px;
+                margin: 0.625em 0;
+                width: 100%;
+                outline:none;
+            }
+            .input-group{
+                position: relative;
+                input{
+                    width:100%;
+                    height: 2em;
+                    padding: 10px 2px;
+                    letter-spacing: 1px;
+                    margin-bottom: 1.25em;
+                    border:none;
+                    border-bottom: 1px solid white;
+                    outline:none;
+                    background-color: transparent;
+                    color: inherit;
+                }
+                label{
+                    position: absolute;
+                    top: 8px;
+                    left: 0;
+                    padding: 10px 0;
+                    font-size: 0.8em;
+                    pointer-events: none;
+                    transition: .3s ease-out;
+                }
+                & input:focus +label, & input:valid + label{
+                    transform: translateY(-1.8em);
+                    color: $nav-color-end;
+                    font-size: 0.8em;
+                }
+            }
+        }
+        h1{
+            font-weight: bold;
+            font-size: 2em;
+            letter-spacing: 2px;
+        }
+        p{
+            font-size: 0.875em;
+            font-weight: 100;
+            line-height: 1.25em;
+            letter-spacing: 0.5px;
+            margin: 1.25em 0 1.875em;
+        }
+        span{
+            font-size: 0.75em;
+            margin-bottom: 0.625em;
+        }
+        input[type="submit"]{
+            border-radius: 1.5em;
+            border: 1px solid rgb(111,34,50);
+            background-color: $nav-color-end;
+            color: white;
+            font-size: 0.8em;
+            font-weight: bold;
+            padding: 0.8em 2.5em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            width: 10em;
+            transition: transform 80ms ease-in;
+            &:active{
+                transform: scale(0.95);
+            }
+            &:focus{
+                outline:none;
+            }
+            &.ghost{
+                background-color: transparent;
+                border-color:$text;
+            }
+        }
+        & .signup, & .login{
+            position: absolute;
+            top:0;
+            height: 100%;
+            left: 0;
+            width: 50%;
+            transition: all 0.6s ease-in-out;
+        }
+        & .login{
+            z-index: 2;
+        }
+        & .signup{
+            z-index: 1;
+            opacity: 0;
+        }
+        .overlay-cont{
+            position: absolute;
+            top:0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 100;
+        }
+        .overlay{
+            @include navGradient;
+            color: $text;
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+        .overlay-panel{
+            position:absolute;
+            top:0;
+            @include flex(column);
+            padding: 0 40px;
+            height: 100%;
+            width: 50%;
+            text-align: center;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+        .overlay-right{
+            right: 0;
+            transform: translateX(0);
+        }
+        .overlay-left{
+            left: 0;
+            transform: translateX(-20%);
+        }
+    
+    // Animation
+        &.right-panel-active{
+            .login{
+                transform: translateX(100%);
+                opacity:0;
+            }
+            .overlay-cont{
+                transform: translateX(-100%);
+            }
+            .signup{
+                transform: translateX(100%);
+                opacity:1;
+                z-index: 5;
+            }
+            .overlay{
+                transform: translateX(50%);
+            }
+            .overlay-left{
+                transform:translateX(0);
+            }
+            .overlay-right{
+                transform: translateX(20%);
+            }
+        }
+    .forgot-pw{
+        text-decoration: none;
+        color:  $text;
+        font-size: 0.875em;
+        margin: 0.9em 0;
+    }
+    }
+
+}
+@media screen and (max-width:768px){
+    .wrapper{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 700px){
+    .wrapper{
+        font-size: 12px;
+    }
+    .social-cont{
+        margin: 1em 0;
+    }
+    .input-group input{
+        margin-bottom: 1em;
+    }
+}
+@media screen and (max-width:600px) {
+    .wrapper{
+        font-size: 10px;
+    }
+    .container{
+        min-height: 34em;
+    }
+    .social-cont{
+        margin: 1em 0;
+    }
+    .social-cont a{
+        margin: 0.5em 0;
+    }
+}

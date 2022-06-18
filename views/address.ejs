@@ -1,0 +1,234 @@
+<%-include ('partials/header.ejs') %>
+    <link rel="stylesheet" href="./css/address.css">
+
+    <div class="whole_NB">
+        <div class="whole_one_NB">
+            <div class="first_address_NB">
+                <span>Select Delivery Address</span>
+                <!-- <button type="submit " class="add_more_address1_NB">ADD ADDRESS</button> -->
+            </div>
+            <!-- <h3>Default Address</h3> -->
+
+
+            <!-- <div class="different_addresses"> -->
+                <% for(let a of addresses){ %>
+                <div class="second_address_NB">
+
+                    <span class="name_address_NB">
+                        <%= a.f_name %> <%= a.l_name %>
+                    </span>
+                    <!-- <button class="home_office_button_NB">Home</button> -->
+                    <p class="full_address_NB">
+                        <%= a.s_name %>, house no.- <%= a.b_name %>, <%= a.c_name %>, <%= a.state %>, <%= a.country %>, PIN Code- <%= a.p_code %>
+                    </p>
+                    <span class="phone_number_address_NB">Mobile No.</span>
+                    <span class="number_address_NB">
+                        <%= a.ph_no %>
+                    </span>
+                    <br>
+                    <button class="remove_address_NB">REMOVE</button>
+                    <button class="edit_address_NB">EDIT</button>
+                    <span style="display: none;" class="prodID"><%=a._id%></span>
+                </div>
+                <% } %>
+            <!-- </div> -->
+
+
+            <a class="add_more_address_NB">+ Add New Address</a>
+
+            <div class="addr-form">
+                <span class="heading_NB">Add New Address/Edit</span>
+                <i class="cancel_form fas fa-times"></i>
+
+                
+
+                <form action="/address" method="POST">
+                    <div>
+                        <input type="text" name="fname" id="fname" placeholder="First Name*">
+                        <input type="text" name="lname" id="lname" placeholder="Last Name*">
+                    </div>
+                    <div>
+                        <input type="text" name="hno" id="hno" placeholder="House No, Building Name*">
+                        <input type="text" name="street" id="street" placeholder="Street Name*">
+                    </div>
+                    <div>
+                        <input type="text" name="city" id="city" placeholder="City/Town*">
+                        <input type="text" name="pcode" id="pcode" placeholder="Postal Code*">
+                    </div>
+                    <div>
+                        <input type="text" name="state" id="state" placeholder="State*">
+                        <input type="text" name="country" id="country" placeholder="Country*">
+                    </div>
+                    <div>
+                        <input type="text" name="phno" id="phno" placeholder="Mobile*">
+                    </div><br>
+                    <!-- <label>
+                        <input type="checkbox" name="isdefault">
+                        Make this your default address
+                    </label> -->
+                    <!-- <button class="btn_save"><span>Save</span></button> -->
+                    <input class="btn_save" type="submit" value="save">
+                </form>
+            </div>
+
+        </div>
+        <div class="whole_two_NB">
+            <!-- <p>Delivery Estimates</p> -->
+            <div class="estimate_delivery">
+                <h3>Delivey Estimate</h3>
+                <div class="date_of_delivery">
+                    <span>Deliver by</span>
+                    <span class="estimate_date">14 feb</span>
+                </div>
+            </div>
+            <div class="coupons">
+                <h3>Coupons</h3>
+                <div class="price">
+                    <span >Apply Coupons</span>
+                    <button>Apply</button>
+                </div>
+        
+            </div>
+        
+            <!-- price section -->
+            <div class="total_price">
+                <h3>Price Details</h3>
+                <div class="price">
+                    <span class="money">Sub total</span>
+                    <span class="Total_MRP main_amount">352</span>
+                </div>
+                
+                <div class="price">
+                    <span class="money">Coupon Discount</span>
+                    <span class="total_MRP coupon_amount">0</span>
+                </div>
+                <div class="price">
+                    <span class="money">Shipping Charge</span>
+                    <span class="delivery_charge">0</span>
+                </div>
+        
+            </div>
+        
+            <div class="final_price">
+                <div class="price">
+                    <span class="money">Final Amount</span>
+                    <span class="Total_MRP final_amount">300</span>
+                </div>
+            </div>
+        
+            <!-- check out section -->
+            <div class="check-out_cont">
+                
+                   <button class="check-out" >Check out </button>
+            
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let addr_form = document.querySelector('.addr-form');
+        let add_more_address_NB = document.querySelector('.add_more_address_NB');
+
+        let cancel_form= document.querySelector('.cancel_form');
+        cancel_form.addEventListener("click", function(){
+            addr_form.style.display = "none";
+        })
+
+        add_more_address_NB.addEventListener("click", function () {
+            addr_form.style.display = "block";
+            cancel_form.style.display = "block";
+
+        })
+
+
+
+
+        var xhr = new XMLHttpRequest();
+
+        function get(url, callback) {
+            console.log("called");
+            xhr.open('GET', url, true);
+            xhr.send();
+
+            xhr.onload = () => {    
+                if (xhr.status === 200) {
+                    console.log(xhr.responseText);
+                    let data = xhr.responseText;
+                    let users = JSON.parse(data);
+                    console.log(users);
+                    callback(null, users);
+                }
+                else {
+                    console.log("adaddf");
+                    callback(true, "not found");
+                }
+            }
+        }
+
+
+
+        let x = document.querySelectorAll('.edit_address_NB');
+        let y = document.querySelectorAll('.second_address_NB');
+        let prodID = document.querySelectorAll(".prodID");
+
+        if(y.length!=0)
+        {
+            y[0].style.background="#1f2022";
+
+        }
+
+        for (let i = 0; i < y.length; i++) {
+            y[i].addEventListener("click", function () {
+                for(let j=0;j<y.length;j++)
+                {
+                    y[j].style.background="#1a1b1c";
+                }
+                y[i].style.background="#1f2022";
+            })
+        }
+        
+        for(let i=0;i<x.length;i++)
+        {
+            x[i].addEventListener("click", function(){
+                cancel_form.style.display="none";
+                get(`/addr/${prodID[i].textContent}`,(err,addr)=>{
+                    if(err)
+                    console("something went wrong");
+                    else{
+                        addr_form.style.display = "block";
+                        document.querySelector('#fname').value=addr.f_name;
+                        document.querySelector('#lname').value=addr.l_name;
+                        document.querySelector('#hno').value=addr.b_name;
+                        document.querySelector('#street').value=addr.s_name;
+                        document.querySelector('#city').value=addr.c_name;
+                        document.querySelector('#pcode').value=addr.p_code;
+                        document.querySelector('#state').value=addr.state;
+                        document.querySelector('#country').value=addr.country;
+                        document.querySelector('#phno').value=addr.ph_no;
+                    }
+                })
+
+                
+            })
+        }
+
+        let z = document.querySelectorAll('.remove_address_NB');
+            for(let i=0;i<z.length;i++)
+            {
+                z[i].addEventListener("click", function(){
+                get(`/addrremove/${prodID[i].textContent}`,(err,addr)=>{
+                    if(err)
+                        console("something went wrong");
+                    
+                })
+                y[i].style.display="none";
+                
+            })
+        }
+        
+
+        
+    </script>
+
+    <%- include ('partials/footer.ejs') %>

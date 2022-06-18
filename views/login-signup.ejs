@@ -1,0 +1,88 @@
+<%-include ('partials/header.ejs') %>
+
+<link rel="stylesheet" href="/css/login-signup.css">
+
+<div class="wrapper">
+    <img src="/svgs/undraw_profile_pic_ic5t.svg" alt="avatar">
+    <div class="container" id="container">
+        
+        <div class="signup">
+            <form action="/register" method="POST" class="form">
+                <h1>Create Account</h1>
+                <div class="social-cont">
+                    <a href="" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="" class="social"><i class="fab fa-twitter"></i></a>
+                </div>
+                <span>or use your email for registration</span>
+                <div class="input-group">
+                    <input type="text" name="name" id="signupUserId" required>
+                    <label for="signupUserId">Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="email" id="signupEmail" required>
+                    <label for="signupEmail">Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" id="signupPass" required>
+                    <label for="signupPass">Password</label>
+                </div>
+                <input type="submit" value="Sign Up" class="submit-btn">
+            </form>
+        </div>
+        <div class="login">
+            <form action="/login" method="POST" class="form" name="login">
+                <h1>Login</h1>
+                <div class="social-cont">
+                    <a href="" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="" class="social"><i class="fab fa-twitter"></i></a>
+                </div>
+                <span>or use your Account</span>
+                <div class="input-group">
+                    <input type="text" name="username" id="loginEmail" required autofocus>
+                    <label for="loginEmail">Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" id="loginPass" required>
+                    <label for="loginPass">Password</label>
+                </div>
+                <a href="" class="forgot-pw">Forgot Password?</a>
+                <input type="submit" value="Login" class="submit-btn">
+            </form>
+        </div>
+        <div class="overlay-cont">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>
+                        Already registered? Then Login now!
+                    </p>
+                    <input type="submit" value="Login" class="ghost" id="login">
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Welcome!</h1>
+                    <p>
+                        Don't have an account with us?<br> Sign Up now!
+                    </p>
+                    <input type="submit" value="Sign Up" class="ghost" id="signUp">
+                </div>
+            </div>
+        </div>
+        <!-- <div id="forgot-pw">
+            <form action="" class="form">
+                <a href="#" class="close">&times;</a>
+                <h2>Reset Password</h2>
+                <div class="input-group">
+                    <input type="text" name="email" id="email" required>
+                    <label for="email">Email</label>
+                </div>
+                <input type="submit" value="Submit" class="submit-btn">
+            </form>
+        </div> -->
+    </div>
+</div>
+
+
+<script src="/js/login-signup.js"></script>
+<%- include ('partials/footer.ejs') %>

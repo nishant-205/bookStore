@@ -1,0 +1,373 @@
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.top-cont {
+  width: 100vw;
+  height: 180vh;
+  padding: 8rem 0rem;
+  padding-top: 4rem;
+}
+
+.carousel-container-img {
+  width: 90vw;
+  margin: 2rem auto;
+  height: 60vh;
+  position: relative;
+  top: 1rem;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 3px 0 rgba(255, 255, 255, 0.4);
+          box-shadow: 0 0 3px 0 rgba(255, 255, 255, 0.4);
+  border: 1px solid #311f1f;
+  border-radius: 5px;
+}
+
+.carousel-container-img .carousel-slider-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100vw;
+}
+
+.carousel-container-img .carousel-slider-img img {
+  width: 90vw;
+  height: 60vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.carousel-container-img .btn-img {
+  position: absolute;
+  top: calc( 50% - 2.5rem);
+  z-index: 10;
+  height: 5rem;
+  font-size: 6rem;
+  color: #fff1f1;
+  opacity: 0.9;
+  background: -webkit-gradient(linear, left top, right top, from(#6f2232), to(#950741));
+  background: linear-gradient(90deg, #6f2232 0%, #950741 100%);
+  width: 2rem;
+  -webkit-box-shadow: 0.1rem 0.1rem 0.1rem 0.001rem #3b2020;
+          box-shadow: 0.1rem 0.1rem 0.1rem 0.001rem #3b2020;
+}
+
+.carousel-container-img #pre-img {
+  left: 0;
+  border-top-right-radius: 11px;
+  border-bottom-right-radius: 11px;
+}
+
+.carousel-container-img #next-img {
+  right: 0;
+  border-top-left-radius: 11px;
+  border-bottom-left-radius: 11px;
+}
+
+.buttons-container {
+  color: black;
+  position: relative;
+  width: 100vw;
+}
+
+.buttons-container .header {
+  position: absolute;
+  top: 4.7rem;
+  left: 1.9rem;
+  color: #030303;
+  -webkit-box-shadow: 0.1rem 0rem 0.9rem #1d1c1c;
+          box-shadow: 0.1rem 0rem 0.9rem #1d1c1c;
+  padding: 1rem;
+  background: -webkit-gradient(linear, left top, right top, from(white), to(#222121));
+  background: linear-gradient(90deg, white 0%, #222121 100%);
+  border-radius: 3px;
+  width: 25rem;
+}
+
+.buttons-container .img-btn {
+  position: absolute;
+  background: inherit;
+  top: 18.8rem;
+  z-index: 10;
+  font-size: 10rem;
+  color: white;
+  height: 5rem;
+  width: 2rem;
+  background: -webkit-gradient(linear, left top, right top, from(#6f2232), to(#950741));
+  background: linear-gradient(90deg, #6f2232 0%, #950741 100%);
+  opacity: 0.9;
+}
+
+.buttons-container .pre {
+  left: 0;
+  border-top-right-radius: 11px;
+  border-bottom-right-radius: 11px;
+}
+
+.buttons-container .next {
+  right: 0;
+  border-top-left-radius: 11px;
+  border-bottom-left-radius: 11px;
+}
+
+.container {
+  margin: auto;
+  scroll-behavior: auto;
+  width: 100vw;
+  height: 80vh;
+  position: relative;
+  top: 9rem;
+  padding-bottom: 10rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.container .slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  widows: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+
+.container .slider .card {
+  height: 24rem;
+  border-radius: 2px;
+  -webkit-box-shadow: 1px 1px 5px 1px rgba(255, 255, 255, 0.15);
+          box-shadow: 1px 1px 5px 1px rgba(255, 255, 255, 0.15);
+  width: 15rem;
+  margin: 0.5rem;
+}
+
+@media screen and (max-width: 1480px) {
+  .container .slider .card {
+    margin: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .container .slider .card {
+    margin: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container .slider .card {
+    width: 14rem;
+    margin: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container .slider .card {
+    margin: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .container .slider .card {
+    margin: 0.1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container .slider .card {
+    margin: 1rem;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .container .slider .card {
+    margin: 1rem;
+    width: 15rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .container .slider .card {
+    margin: 0.8rem;
+    width: 14rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .container .slider .card {
+    width: 13rem;
+    margin: 1rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container .slider .card {
+    width: 13.5rem;
+    margin: 1rem;
+  }
+}
+
+.container .slider .card .img-cont {
+  height: 13rem;
+  margin: 0.5rem 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(255, 255, 255, 0.01);
+  -webkit-box-shadow: 0.02rem 0.02rem 0.02rem 0px #252525;
+          box-shadow: 0.02rem 0.02rem 0.02rem 0px #252525;
+}
+
+.container .slider .card .img-cont img {
+  height: inherit;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.container .slider .card .box {
+  margin: 1rem 1rem 0;
+  color: #d8d1d1;
+  width: calc(inherit - 2em);
+  border-radius: 2px;
+  letter-spacing: 1px;
+}
+
+.container .slider .card .box h4 {
+  padding: 0.2rem;
+}
+
+.container .slider .card .box .name {
+  width: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container .slider .card .box h5 {
+  padding: 0.2rem;
+}
+
+.container .slider .card .box h6 {
+  padding: 0.2rem;
+}
+
+.container .slider .card .box .rating {
+  margin: 0.5rem 0;
+}
+
+.container .slider .card .box .rating i {
+  color: #f3f336;
+}
+
+.container .slider .card .box .bot {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
+}
+
+.container .slider .card .box .bot .productId {
+  display: none;
+}
+
+.container .slider .card .box .bot .icon {
+  width: 5.4rem;
+  height: 2.1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .slider .card .box .bot .icon div {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  border: none;
+  background-color: #771c35;
+  margin: 0 0 0 0.5rem;
+  padding: 0;
+  outline: none;
+  text-decoration: none;
+  color: #1a1a1c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .slider .card .box .bot .icon div a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  border: none;
+  text-decoration: none;
+  background-color: #771c35;
+}
+
+.container .slider .card .box .bot .icon div a:hover {
+  background-color: #dfd5d5;
+}
+
+.container .slider .card .box .bot .icon i {
+  color: #1a1a1c;
+  font-size: 1rem;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+}
+/*# sourceMappingURL=home.css.map */

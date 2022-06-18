@@ -1,0 +1,81 @@
+// Colors Variables
+$bg-color-begin: #0a0a0a;
+$bg-color-end: #1a1a1c;
+$nav-color-begin: #6f2231;
+$nav-color-end: #950742;
+$dark-on-nav: rgba(0,0,0,0.8);
+$black: black;
+$text: #ddd;
+$active-sel: rgba(221,221,221,0.05);
+$input-color: rgba(221,221,221,0.8);
+$green-btn: rgba(176, 218, 195, 0.8);
+$green-btn-hover: rgba(176,218,195,1);
+$red-btn:#e32636a6;
+$red-btn-hover: #e32636e5;
+
+
+// media query values
+$xs: 576px;
+$sm: 768px;
+$md: 992px;
+$lg: 1200px;
+
+$lm: 1450px;
+$ls:950px;
+
+// For flexbox  Default: direction- row, justify- flex-start, align- stretch
+// Here : direction-row, justify- center, align- center
+@mixin flex($direction:row,$justify:center,$align:center){
+    display:flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+// Background Gradient with Fallback
+@mixin bgGradient{
+    background: $bg-color-end; 
+    background: linear-gradient(45deg, $bg-color-begin 0%, $bg-color-end 100%);
+    background-attachment: fixed;
+}
+// Navbar and Footer Gradient with Fallback
+@mixin navGradient{
+    background: $nav-color-begin;
+    background: linear-gradient(90deg, $nav-color-begin 0%, $nav-color-end 100%);
+}
+// Boxes for icons
+@mixin box($pos-from-right){
+    position: absolute;
+    right: $pos-from-right;
+    top:50%;
+    transform: translate(0, -50%);
+    background: $dark-on-nav;
+    height:2.1rem;
+    min-width:2.1rem;
+    border-radius: 2.1rem;
+}
+@mixin box-item(){
+    right: 0;
+    position: absolute;
+    height: 1.6rem;
+    width: 1.6rem;
+    text-decoration: none;
+    top:50%;
+    transform: translate(-0.25rem,-50%);
+    border-radius: 50%;
+    @include flex();
+    color: $nav-color-end;
+    transition: 0.4s;
+}
+
+@mixin box-shadow-cart {
+    // box-shadow: 0.03rem 0.03rem 0.1rem 0.1rem rgba(58, 58, 55, 0.951);
+    box-shadow: 0.01rem 0.02rem 0.03rem 0.06rem rgba(56, 58, 55, 0.951);
+    border-radius: 2px;
+            
+}
+
+@mixin media($media-width){
+    @media screen and (max-width:$media-width){
+        @content;
+    }
+}

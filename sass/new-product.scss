@@ -1,0 +1,38 @@
+@import './variables';
+
+
+.main-cont{
+    @include flex(row,space-evenly,stretch);
+    padding: 7rem 0;
+    font-size: 16px;
+    overflow: hidden;
+    form{
+        @include flex(column, space-between, stretch);
+        color: $text;
+        div{
+            @include flex(row,space-between);
+            label{
+                margin: 0.5em;
+                color: $text;
+            }
+            input, textarea{
+                width: 25em;
+                background-attachment: $input-color;
+                outline:none;
+            }
+        }
+        #add-img, #add-author{
+            margin: 1em 0.5em;
+            justify-content: flex-start;
+            cursor: pointer;
+            span{
+                margin-left: 1em;
+            }
+        }
+        input[type="submit"]{
+            width: 6em;
+            align-self: center;
+            margin-top: 2em;
+        }
+    }
+}

@@ -1,0 +1,180 @@
+<%- include("partials/header") %>
+<link rel="stylesheet" href="css/cart.css">
+<style>
+     .sub_item_container .container-1 .drop-down .button:focus + .drop-options li>a{
+               color: #ddd;
+            }
+</style>
+
+<div class="top-cont">
+    
+<%if(session.cart && session.cart.totalQty!=0){%>
+    <div class="main_container">
+        <div class="cart-element">
+          
+            <%for(let i=0;i<products.length;i++){ %>
+          <div class="sub_main_container">
+              <div class="img_container">
+                <img src="<%=products[i].product.img%>" alt="">
+                             
+              </div>  
+    
+              <div class="item_container">
+                  <div class="sub_item_container">
+                      <div class="container-1">
+                        <h3 class="name"><a href="/product/<%=products[i].product._id%>"><%=products[i].product.name%></a></h3>
+                        <h5 class="author"><%=products[i].product.author%></h5>
+                        <h6 class="pub"><%=products[i].product.publisher%></h6>
+                      </div>
+    
+                      <div class="container-2">
+                          <div class="item-price">
+                              <div class="book_price_NB">
+                                  <span><i class="fas fa-rupee-sign"></i></span>
+                                  <span class="rate_NB"><%=products[i].price.toFixed(2)%></span>
+                              </div>
+                              <div class="discount_NB">
+                                  <div class="original_price_cont">
+                                      <i class="fas fa-rupee-sign"></i>
+                                      <span class="original_price"><%=(products[i].price/(1-products[i].product.discount/100)).toFixed(2)%></span>
+                                  </div>
+    
+                                  <span class="discount_percent_NB">(<%=products[i].product.discount%>% OFF)</span>
+    
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+    
+                  <div class="sub_item_container">
+                      <div class="container-1">
+                          <div class="quantity">
+                              <span>QTY</span>
+                              <div class="item_count">
+                                  <a class="count-button plus"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                  <span class="display_item_count"><%=products[i].incart%></span>
+                                  <a class="minus count-button"><i class="fa fa-minus" aria-hidden="true"></i></a>
+    
+                              </div>
+                          </div>
+                      </div>
+    
+                      <div class="container-2 remove-div">
+                        <span style="display: none;" class="productID"><%=products[i].product._id%></span>
+                               
+                      </div>
+                  </div>
+    
+                  <div class="sub_item_container">
+                      <div class="container-1">
+                          <div class="drop-down">
+                              <div class="drop-button">
+                                  <div class="value"><%=products[i].book_type%></div>
+                                  <button><i class="fas fa-caret-down"></i></button>
+                              </div>
+                              <ul class="drop-options">
+                                  <%if(products[i].product.price_PaperBack){%>
+                                <li><a href="/cart/<%=products[i].product._id%>/PaperBack">PaperBack</a></li>
+                                <%}if(products[i].product.price_HardCover){%> 
+                                <li><a href="/cart/<%=products[i].product._id%>/HardCover">HardCover</a></li>
+                                <%}if(products[i].product.price_Kindle){%>
+                                  <li><a href="/cart/<%=products[i].product._id%>/Kindle">Kindle</a></li>
+                                  <%}%>
+                              </ul>
+                          </div>
+                      </div>
+    
+                      <div class="container-2 remove_button">
+                          <span class="left_button delete_button">Save For Later</span>
+                          <span class="right_button delete_button">Remove</span>
+                      </div>
+                  </div>
+    
+              </div>
+          </div>
+          <%}%>
+          
+          
+    
+        </div>
+          
+        <div class="total_price_container">
+      
+          <!-- pin code check  -->
+      <div class="pin_NB">
+          <form action="/">
+              <label for="pin" class="check_text_NB">Check for Delivery &nbsp;&nbsp; </label>
+              <input type="PIN" name="pin" placeholder="Enter your PIN Code" maxlength="6" minlength="6">
+              <button type="submit">Check</button>
+          </form>
+    
+      </div>
+    
+          <!-- coupon section -->
+      <div class="coupons">
+          <h3>Coupons</h3>
+          <div class="box-3">
+              <div class="money">Apply Coupons</div>
+              <div>
+                  <button>Apply</button>
+              </div>
+          </div>
+    
+      </div>
+    
+      <!-- price section -->
+      <div class="total_price">
+          <h3>Price Details</h3>
+          <div class="box-3">
+              <div class="money">Sub total</div>
+              <div class="Total_MRP main_amount"><span><i class="fas fa-rupee-sign"></i></span>
+                <%=session.cart.totalPrice.toFixed(2)%></div>
+          </div>
+          
+          <div class="box-3">
+              <div class="money">Coupon Discount</div>
+              <div class="total_MRP coupon_amount">0</div>
+          </div>
+          <div class="box-3">
+              <div class="money">Shipping Charge</div>
+              <div class="delivery_charge">0</div>
+          </div>
+    
+      </div>
+    
+      <div class="final_price">
+          <div class="box-3">
+              <div class="money">Final Amount</div>
+              <div class="Total_MRP final_amount"><span><i class="fas fa-rupee-sign"></i></span>
+                  <span><%=session.cart.totalPrice.toFixed(2)%></span></div>
+          </div>
+      </div>
+    
+      <!-- check out section -->
+      <div class="check-out_cont">
+          
+             <button class="check-out" >Check out </button>
+      
+      </div>
+    
+    
+    </div>
+    
+    
+      </div>
+    
+
+
+
+
+<h1 class="empty_cart"></h1>
+
+  <%} else{%>
+    <h1 class="empty-cart">Your cart is empty</h1>
+<%}%>
+</div>
+  <script src="js/cart.js"></script>
+
+
+  
+<%- include("partials/footer") %>

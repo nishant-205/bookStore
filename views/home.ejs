@@ -1,0 +1,79 @@
+<%- include("partials/header") %>
+<link rel="stylesheet" href="/css/home.css">
+
+<div class="top-cont">
+    
+    <div class="carousel-container-img">
+        <svg viewBox="0 0 16 16" class="bi bi-chevron-compact-left btn-img" id="pre-img" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+        </svg>
+        <svg viewBox="0 0 16 16" class="bi bi-chevron-compact-right btn-img" id="next-img" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+        </svg>
+        <div class="carousel-slider-img">
+            <img src="images/BHP-PC.png">
+            <img src="https://images.pexels.com/photos/34592/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=750&w=1260">
+            <img src="https://images.pexels.com/photos/2908984/pexels-photo-2908984.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+            <img src="https://images.pexels.com/photos/207662/pexels-photo-207662.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+        </div>
+    </div>   
+
+    <div class="buttons-container">
+        <div class="header">
+            <h2>Books hot off the press</h2>
+        </div>
+
+        <svg  viewBox="0 0 16 16" class="bi bi-chevron-compact-left pre img-btn" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+        </svg>
+        <svg  viewBox="0 0 16 16" class="bi bi-chevron-compact-right next img-btn" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="slider">
+            <%for(var i=0;i<prod.length;i++){ %>
+                <div class="card">
+                    <div class="img-cont">
+                        <img src="<%=prod[i].img%>" alt="">
+                    </div>
+                    <div class="box">
+                        <a href='/product/<%=prod[i]._id%>'> <h4 class="name"><%=prod[i].name%></h4></a>
+                        <h5 class="author"><%=prod[i].author%></h5>
+                        <h6 class="pub"><%=prod[i].publisher%></h6>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>      
+                            <% if(prod[i].totRating) { %>                
+                            <%=((prod[i].star[0]+prod[i].star[1]*2+prod[i].star[2]*3+prod[i].star[3]*4+prod[i].star[4]*5)/prod[i].totRating).toFixed(1) %> 
+                            <% }  else { %>
+                                0
+                            <% } %>
+                            (<%=prod[i].totRating %>)
+                        </div>
+                        <div class="bot">
+                            <div class="price">&#8377; <%= Math.ceil((prod[i].price_PaperBack -(prod[i].price_PaperBack*prod[i].discount)/100)).toFixed(2) %></div>
+                            <div class="icon">
+                                <div>
+                                    <a class="bookmark">
+                                        <i class="fas fa-bookmark"></i>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a class="cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                </div>
+                                <span class="productId"><%=prod[i]._id%></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <%}%>  
+        </div>            
+    </div>
+</div>
+<script src="js/home.js"></script>
+
+<%- include("partials/footer") %>
+

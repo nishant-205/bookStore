@@ -1,0 +1,366 @@
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 16px;
+}
+
+.wrapper img {
+  position: absolute;
+  top: 5.5rem;
+  width: 5.5em;
+  height: 5.5em;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 1px;
+  z-index: 200;
+}
+
+.wrapper .container {
+  position: relative;
+  margin: 7rem 0;
+  border-radius: 2px;
+  background: transparent;
+  -webkit-box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.22);
+          box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.22);
+  overflow: hidden;
+  width: 45em;
+  max-width: 100%;
+  min-height: 30em;
+}
+
+.wrapper .container .form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 30px;
+  height: 100%;
+  text-align: center;
+  color: #ddd;
+}
+
+.wrapper .container .form .social-cont {
+  margin: 1.25em 0;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.wrapper .container .form .social-cont a {
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin: 1em 0;
+  height: 2.5em;
+  width: 2.5em;
+  text-decoration: none;
+}
+
+.wrapper .container .form .social-cont a i {
+  font-size: 1.2em;
+  color: #ddd;
+}
+
+.wrapper .container .form input {
+  background-color: rgba(221, 221, 221, 0.8);
+  border: none;
+  padding: 12px 15px;
+  margin: 0.625em 0;
+  width: 100%;
+  outline: none;
+}
+
+.wrapper .container .form .input-group {
+  position: relative;
+}
+
+.wrapper .container .form .input-group input {
+  width: 100%;
+  height: 2em;
+  padding: 10px 2px;
+  letter-spacing: 1px;
+  margin-bottom: 1.25em;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  background-color: transparent;
+  color: inherit;
+}
+
+.wrapper .container .form .input-group label {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  padding: 10px 0;
+  font-size: 0.8em;
+  pointer-events: none;
+  -webkit-transition: .3s ease-out;
+  transition: .3s ease-out;
+}
+
+.wrapper .container .form .input-group input:focus + label, .wrapper .container .form .input-group input:valid + label {
+  -webkit-transform: translateY(-1.8em);
+          transform: translateY(-1.8em);
+  color: #950742;
+  font-size: 0.8em;
+}
+
+.wrapper .container h1 {
+  font-weight: bold;
+  font-size: 2em;
+  letter-spacing: 2px;
+}
+
+.wrapper .container p {
+  font-size: 0.875em;
+  font-weight: 100;
+  line-height: 1.25em;
+  letter-spacing: 0.5px;
+  margin: 1.25em 0 1.875em;
+}
+
+.wrapper .container span {
+  font-size: 0.75em;
+  margin-bottom: 0.625em;
+}
+
+.wrapper .container input[type="submit"] {
+  border-radius: 1.5em;
+  border: 1px solid #6f2232;
+  background-color: #950742;
+  color: white;
+  font-size: 0.8em;
+  font-weight: bold;
+  padding: 0.8em 2.5em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: 10em;
+  -webkit-transition: -webkit-transform 80ms ease-in;
+  transition: -webkit-transform 80ms ease-in;
+  transition: transform 80ms ease-in;
+  transition: transform 80ms ease-in, -webkit-transform 80ms ease-in;
+}
+
+.wrapper .container input[type="submit"]:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
+.wrapper .container input[type="submit"]:focus {
+  outline: none;
+}
+
+.wrapper .container input[type="submit"].ghost {
+  background-color: transparent;
+  border-color: #ddd;
+}
+
+.wrapper .container .signup, .wrapper .container .login {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 0;
+  width: 50%;
+  -webkit-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+}
+
+.wrapper .container .login {
+  z-index: 2;
+}
+
+.wrapper .container .signup {
+  z-index: 1;
+  opacity: 0;
+}
+
+.wrapper .container .overlay-cont {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-transition: -webkit-transform 0.6s ease-in-out;
+  transition: -webkit-transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.wrapper .container .overlay {
+  background: #6f2231;
+  background: -webkit-gradient(linear, left top, right top, from(#6f2231), to(#950742));
+  background: linear-gradient(90deg, #6f2231 0%, #950742 100%);
+  color: #ddd;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  -webkit-transition: -webkit-transform 0.6s ease-in-out;
+  transition: -webkit-transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+}
+
+.wrapper .container .overlay-panel {
+  position: absolute;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 40px;
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  -webkit-transition: -webkit-transform 0.6s ease-in-out;
+  transition: -webkit-transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out;
+  transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+}
+
+.wrapper .container .overlay-right {
+  right: 0;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.wrapper .container .overlay-left {
+  left: 0;
+  -webkit-transform: translateX(-20%);
+          transform: translateX(-20%);
+}
+
+.wrapper .container.right-panel-active .login {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  opacity: 0;
+}
+
+.wrapper .container.right-panel-active .overlay-cont {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.wrapper .container.right-panel-active .signup {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+}
+
+.wrapper .container.right-panel-active .overlay {
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+}
+
+.wrapper .container.right-panel-active .overlay-left {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.wrapper .container.right-panel-active .overlay-right {
+  -webkit-transform: translateX(20%);
+          transform: translateX(20%);
+}
+
+.wrapper .container .forgot-pw {
+  text-decoration: none;
+  color: #ddd;
+  font-size: 0.875em;
+  margin: 0.9em 0;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .wrapper {
+    font-size: 12px;
+  }
+  .social-cont {
+    margin: 1em 0;
+  }
+  .input-group input {
+    margin-bottom: 1em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper {
+    font-size: 10px;
+  }
+  .container {
+    min-height: 34em;
+  }
+  .social-cont {
+    margin: 1em 0;
+  }
+  .social-cont a {
+    margin: 0.5em 0;
+  }
+}
+/*# sourceMappingURL=login-signup.css.map */

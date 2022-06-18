@@ -1,0 +1,29 @@
+@import './variables';
+
+
+.container{
+    @include flex(row,space-evenly,stretch);
+    padding: 7rem 0;
+    font-size: 16px;
+    color: $text;
+
+    overflow: hidden;
+    .left{
+        background: transparent;
+        box-shadow: 0 0 3px 0 rgba(255,255,255,0.4);
+        padding:2em;
+        width: 60%;
+    }
+    .right{
+        @include flex(column,flex-start,stretch);
+        box-shadow: 0 0 3px 0 rgba(255,255,255,0.4);
+        min-width:17em;
+        padding: 2em;
+        .ord-sum{
+            .sum{
+                @include flex(row, space-between);
+                padding: 1em 0 0;
+            }
+        }
+    }
+}

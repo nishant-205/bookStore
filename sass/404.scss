@@ -1,0 +1,11 @@
+@import './variables';
+
+.cont404{
+    @include flex();
+    position: relative;
+    height: 40rem;
+    img{
+        max-height: 22rem;
+        margin: 10rem 0;
+    }
+}

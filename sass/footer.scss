@@ -1,0 +1,139 @@
+@import './variables';
+
+#footer{
+    @include navGradient;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.15);
+    @include flex();
+    flex-wrap: wrap;
+    min-height: 21em;
+    color: $dark-on-nav;
+    cursor: default;
+    position: relative;
+    left: 0;
+    bottom:0;
+    padding: 3em 1em 0;
+    width: 100%;
+
+    li{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+        color: $dark-on-nav;
+        font-weight: 500;
+        &:hover{
+            color: $black;
+        }
+    }
+    h2{
+        font-weight: bolder;
+    }
+    .box{
+        padding: 1em 0;
+        width: 100%;
+    }
+    .left{
+        padding: 1em 2em 2em;
+        height: 14em;
+        width: 22rem;
+        @include flex(column);
+        a{
+            padding: 1em;
+            line-height: 1.8em;
+        }
+        .logo{
+            color: $dark-on-nav;
+            text-decoration: none;
+            font-family: 'Architects Daughter', 'Montserrat';
+            font-weight: bold;
+            font-size: 2.5em;
+            letter-spacing: 2px;
+            i{
+                font-size: 0.92em;
+            }
+        }
+    }
+    .middle{
+        padding: 1em 2em 2em;
+        height: 14em;
+        width: 22em;
+        text-align: center;
+        a{
+            line-height: 1.4em;
+        }
+    }
+    .right{
+        padding: 1em 2em 2em;
+        height: 14em;
+        width: 22em;
+        text-align: center;
+        .connect{
+            padding: 2em 0 1em;
+            width: 100%;
+            input{
+                border-radius: 2em;
+                width: 14em;
+                border: none;
+                background-color: $dark-on-nav;
+                color: $text;
+                height: 1.5em;
+                padding: 1em;
+                outline: none;
+            }
+            button{
+                background-color: $dark-on-nav;
+                color: $nav-color-end;
+                border-radius: 2em;
+                border:none;
+                @include flex();
+                display: inline-flex;
+                outline:none;
+                padding: 1em;
+                height: 1.5em;
+                width: 2.5em;
+                font-weight: bold;
+                cursor: pointer;
+                &:hover{
+                    color: $text;
+                }
+            }
+        }
+        .box{
+            @include flex(row,space-around);
+            font-size: 0.7em;
+        }
+        .social{
+            width: 3em;
+            height: 3em;
+            color: $nav-color-end;
+            background-color: $dark-on-nav;
+            @include flex();
+            border-radius: 50%;
+            border: none;
+            outline:none;
+            cursor: pointer;
+            font-size:1.5em;
+            i{
+                font-size: 1.5em;
+                &:hover{
+                    color: $text;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 480px){
+        &{
+            padding-bottom: 3em;
+        }
+    }
+}
+.bottom{
+    border-top: 0.1px solid $dark-on-nav;
+    background: $nav-color-begin;
+    background: linear-gradient(90deg,$nav-color-begin 0%, $nav-color-end 100%);
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.15);
+    height: 4.5em;
+    color: $dark-on-nav;
+    @include flex(column);
+    width: 100%;
+}
